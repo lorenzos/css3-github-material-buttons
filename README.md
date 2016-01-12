@@ -70,7 +70,7 @@ Note: Some CSS3 features are not supported in older versions of Opera and versio
 
 ## License ##
 
-[Public domain](http://unlicense.org), except Google's Material icons (and so [`gh-icons.png`](blob/master/gh-icons.png)) that are licensed under [CC-BY license](https://creativecommons.org/licenses/by/4.0/).
+[Public domain](http://unlicense.org), except Google's Material icons (and so [`gh-icons.png`](gh-icons.png)) that are licensed under [CC-BY license](https://creativecommons.org/licenses/by/4.0/).
 
 ## Acknowledgements ##
 
