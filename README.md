@@ -1,10 +1,10 @@
-# CSS3 GitHub Buttons #
-
-![unmaintained](http://img.shields.io/badge/status-unmaintained-red.png)
+# CSS3 GitHub Material Buttons #
 
 CSS3 GitHub Buttons helps you easily create GitHub-style buttons from links, buttons, and inputs.
 
-Example: [necolas.github.io/css3-github-buttons/](http://necolas.github.io/css3-github-buttons/)
+This fork replaces all the icons from the [original repo](https://github.com/necolas/css3-github-buttons) with the icons from Google's [Material icons](https://design.google.com/icons/). I was still using Nicolas Gallagher's work in my everyday job, and now that is not maintained anymore, I decided to fork it and replace the limited set of icons that comes with it.
+
+**Example** from original repo: [necolas.github.io/css3-github-buttons/](http://necolas.github.io/css3-github-buttons/)
 
 ## Buttons ##
 
@@ -58,7 +58,7 @@ Displaying a mixture of grouped and standalone buttons, as might be seen in a to
 
 ## Buttons with icons ##
 
-A range of icons can be added (only for links and buttons) by adding a class of `icon` and any one of the provided icon classes.
+Icons can be added (only for links and buttons) by adding a class of `icon` and any one of the Google's [Material icons](https://design.google.com/icons/) names.
 
     <a href="#" class="button icon search">Search</a>
 
@@ -70,8 +70,10 @@ Note: Some CSS3 features are not supported in older versions of Opera and versio
 
 ## License ##
 
-Public domain: [http://unlicense.org](http://unlicense.org)
+[Public domain](http://unlicense.org), except Google's Material icons (and so [`gh-icons.png`](blob/master/gh-icons.png)) that are licensed under [CC-BY license](https://creativecommons.org/licenses/by/4.0/).
 
 ## Acknowledgements ##
 
-Inspired by [Michael Henriksen](http://michaelhenriksen.dk)'s [CSS3 Buttons](http://github.com/michenriksen/css3buttons). Icons from [Iconic pack](http://somerandomdude.com/projects/iconic/).
+Inspired by [Michael Henriksen](http://michaelhenriksen.dk)'s [CSS3 Buttons](http://github.com/michenriksen/css3buttons).  
+Forked from [Nicolas Gallagher](https://github.com/necolas)'s [repo](https://github.com/necolas/css3-github-buttons).  
+Icons from Google's [Material icons](https://design.google.com/icons/).
