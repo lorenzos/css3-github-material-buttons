@@ -1,0 +1,10 @@
+{{!-- Handlebars.js template used by sprity to generate the style file (see build.js) --}}
+{{#each layouts}}
+{{#each layout.items}}
+.button.{{meta.name}}.icon:before { background-position: 0 -{{y}}px; }
+.button.{{meta.name}}.icon:hover:before,
+.button.{{meta.name}}.icon:focus:before,
+.button.{{meta.name}}.icon:active:before { background-position: -18px -{{y}}px; }
+
+{{/each}}
+{{/each}}

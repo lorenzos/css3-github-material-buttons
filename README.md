@@ -64,9 +64,9 @@ Displaying a mixture of grouped and standalone buttons, as might be seen in a to
 
 ### Buttons with icons
 
-Icons can be added (only for links and buttons) by adding a class of `icon` and any one of the Google's [Material icons](https://design.google.com/icons/) names.
+Icons can be added (only for links and buttons) by adding a class of `icon` and any one of the Google's [Material icons](https://design.google.com/icons/) names prefixed with `ic_` (the prefix is to avoid collisions with your other CSS class names).
 
-    <a href="#" class="button icon search">Search</a>
+    <a href="#" class="button icon ic_search">Search</a>
 
 ## Browser compatibility
 
