@@ -1,3 +1,7 @@
 [submodule "material-design-icons"]
 	path = material-design-icons
 	url = https://github.com/google/material-design-icons
+[submodule "zopfli"]
+	path = zopfli
+	url = https://github.com/google/zopfli.git
+	ignore = untracked
