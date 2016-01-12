@@ -1,16 +1,7 @@
-
-// This node.js script is used to create the PNG sprite with
-// all icons from the Google's Material icons submodule, and
-// to update the gh-buttons.css file accordingly.
-
-// Requirements:
-//   npm install async sprity lwip
-//   git submodule init && git submodule update 
-//   cd zopfli && make zopflipng && cd ..
-
 var name = 'gh-icons';
 var format = 'png';
-var compressWithZopfli = true;
+var cssPath = ''; // Path used to reference the PNG sprite in the CSS (e.g. '../images')
+var compressWithZopfli = true; // FALSE to skip zopflipng compression
 
 // Create the sprite from all black icons
 console.log("Building " + name + '.' + format);
@@ -19,7 +10,8 @@ require('sprity').create({
 	out: process.cwd(),
 	name: name,
 	format: format,
-	cssPath: '',
+	cssPath: cssPath,
+	style: 'gh-buttons-sprite.css',
 	dimension: [{ ratio: 1, dpi: 72 }], 
 	margin: 0,
 	orientation: 'vertical',
@@ -41,7 +33,7 @@ require('sprity').create({
 			require('lwip').create(
 				imageBlack.width() * 2, 
 				imageBlack.height(),
-				{r: 0, g: 0, b: 0, a: 0},
+				{ r: 0, g: 0, b: 0, a: 0 },
 				function(err, createdImage) {
 					image = createdImage;
 					callback(err);
@@ -76,7 +68,7 @@ require('sprity').create({
 			// Compress using zopflipng
 			if (compressWithZopfli) { 
 				require('child_process').execFileSync('zopfli/zopflipng', 
-					['-m', name + '.' + format, name + '-zopfli.' + format],
+					[ '-m', name + '.' + format, name + '-zopfli.' + format ],
 					{ stdio: 'inherit' }
 				);
 				require('fs').unlinkSync(name + '.' + format);
