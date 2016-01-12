@@ -1,12 +1,11 @@
 
-// This node.js script is used to create the PNG spite with
+// This node.js script is used to create the PNG sprite with
 // all icons from the Google's Material icons submodule, and
 // to update the gh-buttons.css file accordingly.
 
-// Requirements: 
-//   npm install async
-//   npm install sprity
-//   npm install lwip
+// Requirements:
+//   npm install async sprity lwip
+//   git submodule init && git submodule update 
 //   cd zopfli && make zopflipng && cd ..
 
 var name = 'gh-icons';
@@ -53,8 +52,15 @@ require('sprity').create({
 			image.paste(0, 0, imageBlack, callback);
 		},
 		function(callback) {
-			// TODO: Invert imageBlack colors
-			callback();
+			require('async').timesSeries(imageBlack.width(), function(x, x_next) {
+				require('async').timesSeries(imageBlack.height(), function(y, y_next) {
+					var pixel = imageBlack.getPixel(x, y);
+					pixel.r = 255 - pixel.r;
+					pixel.g = 255 - pixel.g;
+					pixel.b = 255 - pixel.b;
+					imageBlack.setPixel(x, y, pixel, y_next);
+				}, x_next);
+			}, callback);
 		},
 		function(callback) {
 			image.paste(imageBlack.width(), 0, imageBlack, callback);
