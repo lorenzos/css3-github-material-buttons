@@ -2,7 +2,6 @@
 // Config
 var name = 'gh-icons';
 var format = 'png';
-var cssPath = ''; // Path used to reference the PNG sprite in the CSS (e.g. '../images')
 var compressWithZopfli = true; // FALSE to skip zopflipng compression
 
 // Dependencies
@@ -19,7 +18,6 @@ sprity.create({
 	out: process.cwd(),
 	name: name,
 	format: format,
-	cssPath: cssPath,
 	style: 'gh-buttons-sprite.css',
 	template: 'gh-buttons-sprite.hbs',
 	dimension: [{ ratio: 1, dpi: 72 }], 

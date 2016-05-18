@@ -84,7 +84,7 @@ If you want to build [`gh-buttons.css`](gh-buttons.css) and [`gh-icons.png`](gh-
     npm install async sprity lwip # Install build script dependencies
     node build.js
 
-The script creates the PNG sprite sheet using all icons from the Google's submodule and edits the CSS style sheet accordingly. In the first lines of [`build.js`](build.js) there are some variables you can use to customize your build, like the `cssPath` used to reference the PNG sprite in the CSS (e.g. '../images').
+The script creates the PNG sprite sheet using all icons from the Google's submodule and edits the CSS style sheet accordingly.
 
 ## License
 
