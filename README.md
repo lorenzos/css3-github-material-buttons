@@ -88,7 +88,7 @@ The script creates the PNG sprite sheet using all icons from the Google's submod
 
 ## License
 
-[Public domain](http://unlicense.org), except Google's Material icons (and so [`gh-icons.png`](gh-icons.png)) that are licensed under [CC-BY license](https://creativecommons.org/licenses/by/4.0/).
+[Public domain](http://unlicense.org), except Google's Material icons (and so [`gh-icons.png`](gh-icons.png)) that are licensed under [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt).
 
 ## Acknowledgements
 
