@@ -80,12 +80,16 @@
 .button.icon:before {
     content: "";
     position: relative;
-    top: 1px;
+    top: 0;
     float:left;
     width: 18px;
     height: 18px;
     margin: -0.25em 0.5em -0.25em -0.5em;
     background: url(gh-icons.png) 0 99px no-repeat;
+}
+
+.button.icon.icon-only:before {
+    margin-right: -0.4em;
 }
 
 /* {{SPRITE}} */
@@ -4947,6 +4951,11 @@
     top: 2px;
 }
 
+.button.big.icon.icon-only:after {
+    content: "";
+    display: inline-block;
+    height: 13px;
+}
 
 /* =============================================================================
    Button groups
