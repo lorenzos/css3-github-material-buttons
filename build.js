@@ -61,7 +61,7 @@ sprity.create({
 			var css = fs.readFileSync('gh-buttons.css', 'utf8');
 			cssSprite = '/* {{SPRITE}} */\n\n' + cssSprite + '/* {{/SPRITE}} */';
 			css = css.replace(/\/\* \{\{SPRITE\}\} \*\/[\s\S]*\/\* \{\{\/SPRITE\}\} \*\//, cssSprite);
-			fs.writeFile('gh-buttons.css', css);
+			fs.writeFileSync('gh-buttons.css', css);
 			
 			// Delete generated CSS file
 			fs.unlinkSync('gh-buttons-sprite.css');
