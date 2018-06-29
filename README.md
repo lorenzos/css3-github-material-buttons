@@ -64,7 +64,7 @@ Displaying a mixture of grouped and standalone buttons, as might be seen in a to
 
 ### Buttons with icons
 
-Icons can be added (only for links and buttons) by adding a class of `icon` and any one of the Google's [Material icons](https://design.google.com/icons/) names prefixed with `ic_` (the prefix is to avoid collisions with your other CSS class names).
+Icons can be added (only for links and buttons) by adding a class of `icon` and any one of the Google's [Material icons](https://design.google.com/icons/) names prefixed with `ic_`.
 
     <a href="#" class="button icon ic_search">Search</a>
 
@@ -76,13 +76,14 @@ Note: Some CSS3 features are not supported in older versions of Opera and versio
 
 ## Build
 
-
-If you want to build [`gh-buttons.css`](gh-buttons.css) and [`gh-icons.png`](gh-icons.png) yourself, you have to fetch Git submodules for [Material icons](https://design.google.com/icons/) and [zopfli](https://github.com/google/zopfli) and then use the [`build.js`](build.js) Node.js script:
+If you want to build [`gh-buttons.css`](gh-buttons.css) and [`gh-icons.png`](gh-icons.png) yourself, you have to fetch Git submodules for [Material icons](https://github.com/google/material-design-icons) and [zopfli](https://github.com/google/zopfli) and then use the [`build.js`](build.js) Node.js script:
 
     git submodule init && git submodule update
     cd zopfli && make zopflipng && cd .. # Compile zopflipng
-    npm install async sprity lwip # Install build script dependencies
+    npm install async jimp sprity sprity-jimp # Install build script dependencies
     node build.js
+
+> Installation of `sprity` will throw errors on Node 7+ [because of LWIP compilation](https://github.com/EyalAr/lwip/issues/297). It is safe to ignore them, since the JIMP Sprity engine is used instead of the default LWIP engine.
 
 The script creates the PNG sprite sheet using all icons from the Google's submodule and edits the CSS style sheet accordingly.
 

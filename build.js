@@ -7,13 +7,14 @@ var compressWithZopfli = true; // FALSE to skip zopflipng compression
 // Dependencies
 var sprity = require('sprity');
 var async = require('async');
-var lwip = require('lwip');
+var jimp = require('jimp');
 var child_process = require('child_process');
 var fs = require('fs');
 
 // Create the sprite from all black icons
 console.log("Building " + name + '.' + format);
 sprity.create({
+	engine: 'sprity-jimp',
 	src: 'material-design-icons/*/1x_web/*_black_18dp.png',
 	out: process.cwd(),
 	name: name,
@@ -27,50 +28,27 @@ sprity.create({
 	'style-indent-char': '\t',
 	'style-indent-size': 1
 }, function() {
-	
+		
 	// Create the white icons (will be used for ":active" pseudo class)
 	var imageBlack, image;
 	async.series([
 		function(callback) {
-			lwip.open(name + '.' + format, function(err, loadedImage) {
+			jimp.read(name + '.' + format, function(err, loadedImage) {
 				imageBlack = loadedImage;
 				callback(err);
 			});
 		},
 		function(callback) {
-			lwip.create(
-				imageBlack.width() * 2, 
-				imageBlack.height(),
-				{ r: 0, g: 0, b: 0, a: 0 },
-				function(err, createdImage) {
-					image = createdImage;
-					callback(err);
-				}
-			);
+			new jimp(imageBlack.bitmap.width * 2, imageBlack.bitmap.height, 0x00000000, function(err, createdImage) {
+				image = createdImage;
+				callback(err);
+			});
 		},
 		function(callback) {
-			image.paste(0, 0, imageBlack, callback);
-		},
-		function(callback) {
-			async.timesSeries(imageBlack.width(), function(x, x_next) {
-				async.timesSeries(imageBlack.height(), function(y, y_next) {
-					var pixel = imageBlack.getPixel(x, y);
-					pixel.r = 255 - pixel.r;
-					pixel.g = 255 - pixel.g;
-					pixel.b = 255 - pixel.b;
-					imageBlack.setPixel(x, y, pixel, y_next);
-				}, x_next);
-			}, callback);
-		},
-		function(callback) {
-			image.paste(imageBlack.width(), 0, imageBlack, callback);
-		},
-		function(callback) {
-			image.writeFile(name + '.' + format, format, {
-				compression: "high",
-				interlaced: false,
-				transparency: 'auto'
-			}, callback);
+			image.composite(imageBlack, 0, 0);
+			imageBlack.invert();
+			image.composite(imageBlack, imageBlack.bitmap.width, 0);
+			image.write(name + '.' + format, callback);
 		}, function(callback) {
 			
 			console.log("Building gh-buttons.css");
